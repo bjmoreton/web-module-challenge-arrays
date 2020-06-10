@@ -41,7 +41,7 @@ To save you from having to count the items above, you can assume that length of 
 i.e. is31Flavors(originalFlavors) will return TRUE.*/
 
 function is31Flavors(flavorArray) {
-    return flavorArray.length == 31;
+    return flavorArray.length === 31;
 }
 console.log("is31Flavors: ");
 console.log(is31Flavors(originalFlavors));
@@ -57,11 +57,12 @@ Your function should add the flavor to the front of the array and console.log th
 For example addFlavor("Rainbow Sherbert", originalFlavors) should return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla Burnt Almond"] */
 
 function addFlavor(flavorArray, flavor) {
-    flavorArray.splice(0, 0, flavor);
+    flavorArray.unshift(flavor);
+    //flavorArray.splice(0, 0, flavor);
+    console.log(flavorArray);
 }
 console.log("addFlavor: ");
 addFlavor(originalFlavors, "Rainbow Sherbert");
-console.log(originalFlavors);
 
 
 /* Task 3: Houston, we have a problem! There are now 32 flavors in the array! Your task is to remove an item from the end of the array. 
@@ -76,10 +77,10 @@ For example removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", 
 
 function removeLastFlavor(flavorArray) {
     flavorArray.pop();
+    console.log(flavorArray);
 }
 console.log("removeLastFlavor: ");
 removeLastFlavor(originalFlavors);
-console.log(originalFlavors);
 
 /* Task 4: Write a function that returns a flavor at a given index in the array.
 
@@ -112,10 +113,10 @@ Hint: You can use .splice() for this
 
 function removeFlavorByName(flavorArray, flavor) {
     flavorArray.splice(flavorArray.indexOf(flavor));
+    console.log(flavorArray);
 }
 console.log("removeFlavorByName: ");
 removeFlavorByName(originalFlavors, "Vanilla");
-console.log(originalFlavors);
 
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
@@ -126,13 +127,12 @@ Your function should accept:
 
 and should return a new array that is identical to the old array. You can name the new array however you'd like. */
 
-function copy(newArray, oldArray) {
-    for (let i = 0; i < oldArray.length; i++) {
-        newArray.push(oldArray[i]);
-    }
+function copy(newArray, oldArray){
+    newArray = [...oldArray];
+    return newArray;
 }
-testFlavors = []
-copy(testFlavors, originalFlavors);
+let testFlavors = []
+testFlavors = copy(testFlavors, originalFlavors);
 console.log("Copy: ");
 console.log(testFlavors);
 
