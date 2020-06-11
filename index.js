@@ -131,10 +131,8 @@ function copy(newArray, oldArray){
     newArray = [...oldArray];
     return newArray;
 }
-let testFlavors = []
-testFlavors = copy(testFlavors, originalFlavors);
 console.log("Copy: ");
-console.log(testFlavors);
+console.log(copy('testFlavors', originalFlavors));
 
 /* Task 7: July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. Write a function that checks every item in the array for a given string and returns a new array called filteredArray with just these values. Rather than hardcoding "chocolate" into your function, pass a string as a parameter, and invoke with the argument "chocolate". This way you could also filter for "Vanilla", "Sherbert", etc. when those holidays roll around.
 
@@ -276,13 +274,13 @@ function getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regional
     let returnArray = [];
     for (let i = 0; i < 31; i++) {
         if (i % 3 == 0) {
-            returnArray.push(originalFlavors[Math.floor(Math.random() * originalFlavors.length)]);
+            returnArray.push(originalFlavors.splice(Math.floor(Math.random() * originalFlavors.length), 1)[0]);
         } else if (i % 4 == 0) {
-            returnArray.push(newFlavors[Math.floor(Math.random() * newFlavors.length)]);
+            returnArray.push(newFlavors.splice(Math.floor(Math.random() * newFlavors.length), 1)[0]);
         } else if (i % 5 == 0) {
-            returnArray.push(seasonalFlavors[Math.floor(Math.random() * seasonalFlavors.length)]);
+            returnArray.push(seasonalFlavors.splice(Math.floor(Math.random() * seasonalFlavors.length), 1)[0]);
         } else {
-            returnArray.push(regionalFlavors[Math.floor(Math.random() * regionalFlavors.length)]);
+            returnArray.push(regionalFlavors.splice(Math.floor(Math.random() * regionalFlavors.length), 1)[0]);
         }
     }
 
